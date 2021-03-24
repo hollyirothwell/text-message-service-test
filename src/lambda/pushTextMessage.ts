@@ -1,10 +1,10 @@
 import {
   Context,
-  SNSEvent
+  SQSEvent
 } from "aws-lambda";
 import * as AWS from "aws-sdk";
 
-export const handler = async (event: SNSEvent, context: Context): Promise<any> => {
+export const handler = async (event: SQSEvent, context: Context): Promise<any> => {
   try {
     const publishText = new AWS.SNS();
     let publishPromises: any[] = [];

@@ -1,0 +1,27 @@
+service: text-message-service
+
+frameworkVersion: ">=2.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: eu-west-2
+
+functions:
+  sendTextMessage:
+    handler: src/lambda/sendTextMessage.handler
+    memorySize: 128
+    description: Send a text message.
+    events:
+      - http: 
+          path: /text
+          method: post
+  pushTextMessage:
+    handler: src/lambda/pushTextMessage.handler
+    memorySize: 128
+    description: Push a text message to SNS.
+    events:
+      - http: 
+          path: /pushText
+          method: post

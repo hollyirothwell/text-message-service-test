@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: Text Message Service
+  description: Send text messages
+  contact:
+    email: hollyirothwell@gmail.com
+  version: 1.0.0
+servers:
+- url: https://64nzvv8qji.execute-api.eu-west-2.amazonaws.com/dev/text
+ 
+paths:
+  /sendTextMessage:
+    post:
+      description: Sends a request for a text message
+      operationId: sendTextMessage
+      requestBody:
+        $ref: '#/components/requestBodies/TextMessage'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendTextMessageResponse'
+        '500':
+          $ref: "#/components/responses/Error"
+ 
+components:
+  requestBodies:
+    TextMessage:
+      description: Request a text message
+      required: true
+      content:
+        application/vnd.api+json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+              mobileNumber:
+                type: string
+  schemas:
+    SendTextMessageResponse:
+      type: object
+      additionalProperties: false
+      required:
+        - message
+      properties:
+        message:
+          type: string
+  responses:
+    Error:
+      description: On errors
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+            required:
+            - errors

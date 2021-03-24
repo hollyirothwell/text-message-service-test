@@ -15,7 +15,7 @@ functions:
     description: Send a text message.
     events:
       - http: 
-          path: /text
+          path: /sendTextMessage
           method: post
   pushTextMessage:
     handler: src/lambda/pushTextMessage.handler
@@ -23,5 +23,5 @@ functions:
     description: Push a text message to SNS.
     events:
       - http: 
-          path: /pushText
+          path: /pushTextMessage
           method: post

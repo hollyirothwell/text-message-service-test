@@ -6,7 +6,7 @@ info:
     email: hollyirothwell@gmail.com
   version: 1.0.0
 servers:
-- url: https://64nzvv8qji.execute-api.eu-west-2.amazonaws.com/dev/text
+- url: https://64nzvv8qji.execute-api.eu-west-2.amazonaws.com/dev
  
 paths:
   /sendTextMessage:
